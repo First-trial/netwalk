@@ -1,5 +1,8 @@
 (function() {
 
+  "use strict";
+
+
   /**
    * Represents a game of Netwalk.
    * @constructor
@@ -12,7 +15,7 @@
     this.options = options || {};
 
     // Configure option defaults
-    this.options = _.assign({ columns: 10, rows: 10 }, this.options);
+    this.options = _.assign(this.DEFAULT_OPTIONS, this.options);
 
     // Initialize the renderer
     this.renderer = new NetwalkRenderer(
@@ -21,6 +24,8 @@
       this.options.rows
     );
   }
+
+  Netwalk.prototype.DEFAULT_OPTIONS = { columns: 10, rows: 10 };
 
 
   /**
@@ -35,6 +40,35 @@
   function NetwalkRenderer(parent, columns, rows) {
     this.parent = parent;
     this.size = { x: columns, y: rows };
+
+    this.init();
+  }
+
+  /**
+   * Scaffold the Netwalk grid inside of the renderer's element.
+   */
+  NetwalkRenderer.prototype.init = function() {
+    this.parent.addClass("netwalk");
+
+    var size = this.size; // Needed because `this` goes out of scope
+
+    // Generate table rows
+    var rows = _.map(_.range(size.y), function(y) {
+      var row = $("<tr>").addClass("row-" + y);
+
+      // Generate the Netwalk node elements (table columns)
+      row.append(
+        _.map(_.range(size.x), function(x) {
+          return $("<td>").addClass("col-" + x).addClass("node");
+        })
+      );
+
+      return row;
+    });
+
+    // Write the grid to a table and attach it to the parent element
+    var table = $("<table>").html(rows);
+    this.parent.append(table);
   }
 
 
