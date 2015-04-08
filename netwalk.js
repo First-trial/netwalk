@@ -12,8 +12,7 @@
     this.options = options || {};
 
     // Configure option defaults
-    this.options.columns = this.options.columns || 10;
-    this.options.rows = this.options.rows || 10;
+    this.options = _.assign({ columns: 10, rows: 10 }, this.options);
 
     // Initialize the renderer
     this.renderer = new NetwalkRenderer(
