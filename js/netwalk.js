@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 
   "use strict";
 
@@ -7,9 +7,9 @@
    * Represents a game of Netwalk.
    * @constructor
    * @param {object} parent - jQuery selector of the element in which the
-   *                          Netwalk board will be rendered.
+   *  Netwalk board will be rendered.
    * @param {object} options - Optional. An object containing key-value pairs
-   *                           for additional configuration options.
+   *  for additional configuration options.
    */
   function Netwalk(parent, options) {
     this.options = options || {};
@@ -25,6 +25,7 @@
     );
   }
 
+  /** Specifies the default size of the game board */
   Netwalk.prototype.DEFAULT_OPTIONS = { columns: 10, rows: 10 };
 
 
@@ -33,7 +34,7 @@
    * state changes.
    * @constructor
    * @param {object} parent - jQuery selector of the element in which the
-   *                          Netwalk board will be rendered.
+   *  Netwalk board will be rendered.
    * @param {integer} columns - The number of columns in the Netwalk board.
    * @param {integer} rows - The number of rows in the Netwalk board.
    */
