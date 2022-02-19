@@ -1,4 +1,4 @@
-;(function() {
+function smth(){
 
   "use strict";
 
@@ -76,4 +76,5 @@
   // Place the Netwalk object in the global scope
   window.Netwalk = Netwalk;
 
-})();
+};
+smth();
